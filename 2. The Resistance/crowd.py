@@ -46,7 +46,8 @@ def _person_check(person):
             if person.number_of_vowels() != 3:
                 return False
         return True
-    return False
+    else:
+        return False
 
 
 def _generate_person():
