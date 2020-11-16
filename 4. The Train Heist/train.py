@@ -10,7 +10,7 @@ class Train:
         while True:
             move = random.choice([-1, 1])
             self._position += move
-            arrow = ['->','<-'][int((move + 1) / 2)]
+            arrow = ['->', '<-'][int((move + 1) / 2)]
             yield arrow
 
     def open_force_field(self):
