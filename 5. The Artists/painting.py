@@ -40,16 +40,18 @@ class Painting:
         self.direction = "right"
         self.painted_squares = []
 
-    def view(self):
+    def _create_svg(self):
         result = []
         for r in range(self.size):
             for c in range(self.size):
                 result += [self.square_template.format(x=c * self.CWIDTH, y=r * self.CWIDTH,
                                                        kind="painted" if (r, c) in self.painted_squares else '')]
 
-        painting = self.main_template.format(width=self.size * self.CWIDTH, height=self.size * self.CWIDTH,
-                                             content="\n".join(result))
-        return SVG(painting)
+        return self.main_template.format(width=self.size * self.CWIDTH, height=self.size * self.CWIDTH,
+                                         content="\n".join(result))
+
+    def view(self):
+        return SVG(self._create_svg())
 
     def paint(self):
         self.painted_squares.append((self.r_pos, self.c_pos))
