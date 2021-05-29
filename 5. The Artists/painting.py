@@ -64,12 +64,13 @@ class Painting:
         index = self.directions.index(self.direction)
         self.direction = self.directions[(index + 1) % 4]
 
-    def move_forward(self):
-        if self.direction == 'up':
-            self.r_pos -= 1
-        if self.direction == 'down':
-            self.r_pos += 1
-        if self.direction == 'left':
-            self.c_pos -= 1
-        if self.direction == 'right':
-            self.c_pos += 1
+    def move_forward(self, n=1):
+        for _ in range(n):
+            if self.direction == 'up':
+                self.row_position -= 1
+            if self.direction == 'down':
+                self.row_position += 1
+            if self.direction == 'left':
+                self.column_position -= 1
+            if self.direction == 'right':
+                self.column_position += 1
