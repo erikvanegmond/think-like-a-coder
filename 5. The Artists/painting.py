@@ -3,9 +3,9 @@ import random
 
 
 class Painting:
-    directions = ["right", "down", "left", "up"]
-    CWIDTH = 40
-    main_template = '''
+    DIRECTIONS = ["right", "down", "left", "up"]
+    COL_WIDHT = 40
+    MAIN_TEMPLATE = '''
     <svg width="{width:d}" height="{height:d}">
         <style>
             svg{{
@@ -31,38 +31,38 @@ class Painting:
         {content}
     </svg>
     '''
-    square_template = '<rect x="{x}" y="{y}" width="40" height="40" class="{kind}"/>'
+    SQUARE_TEMPLATE = '<rect x="{x}" y="{y}" width="40" height="40" class="{kind}"/>'
 
     def __init__(self):
         self.size = random.randrange(5, 20, 2)
-        self.r_pos = 0
-        self.c_pos = 0
+        self.row_position = 0
+        self.column_position = 0
         self.direction = "right"
         self.painted_squares = []
 
     def _create_svg(self):
         result = []
-        for r in range(self.size):
-            for c in range(self.size):
-                result += [self.square_template.format(x=c * self.CWIDTH, y=r * self.CWIDTH,
-                                                       kind="painted" if (r, c) in self.painted_squares else '')]
+        for row in range(self.size):
+            for column in range(self.size):
+                result += [self.SQUARE_TEMPLATE.format(x=column * self.COL_WIDHT, y=row * self.COL_WIDHT,
+                                                       kind="painted" if (row, column) in self.painted_squares else '')]
 
-        return self.main_template.format(width=self.size * self.CWIDTH, height=self.size * self.CWIDTH,
+        return self.MAIN_TEMPLATE.format(width=self.size * self.COL_WIDHT, height=self.size * self.COL_WIDHT,
                                          content="\n".join(result))
 
     def view(self):
         return SVG(self._create_svg())
 
     def paint(self):
-        self.painted_squares.append((self.r_pos, self.c_pos))
+        self.painted_squares.append((self.row_position, self.column_position))
 
     def turn_left(self):
-        index = self.directions.index(self.direction)
-        self.direction = self.directions[index - 1]
+        index = self.DIRECTIONS.index(self.direction)
+        self.direction = self.DIRECTIONS[index - 1]
 
     def turn_right(self):
-        index = self.directions.index(self.direction)
-        self.direction = self.directions[(index + 1) % 4]
+        index = self.DIRECTIONS.index(self.direction)
+        self.direction = self.DIRECTIONS[(index + 1) % 4]
 
     def move_forward(self, n=1):
         for _ in range(n):
