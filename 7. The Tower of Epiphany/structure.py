@@ -61,7 +61,7 @@ class Structure:
         for r in list(range(self.height))[::-1]:
             for c in range(self.width):
                 kind = ""
-                if column and column != c:
+                if column is not None and column != c:
                     pass
                 else:
                     if (self.height-self.structure[c])<=r:
