@@ -1,7 +1,6 @@
 import random
 import time
 
-
 class Bots(dict):
 
     def __getitem__(self, item):
@@ -27,7 +26,7 @@ class Bot:
         self.serie_nummer = serie_nummer
 
     def __repr__(self):
-        return f"Bot(fornuis_nummer={self.fornuis_numner}, serie_nummer={self.serie_nummer})"
+        return f"Bot(fornuis_nummer={self.fornuis_nummer}, serie_nummer={self.serie_nummer})"
 
 
 def generate_bots(aantal_bots):
