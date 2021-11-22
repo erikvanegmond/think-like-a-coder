@@ -21,12 +21,12 @@ class Bots(dict):
 
 
 class Bot:
-    def __init__(self, fornuis_nummer, serie_nummer):
-        self.fornuis_nummer = fornuis_nummer
+    def __init__(self, oven_nummer, serie_nummer):
+        self.oven_nummer = oven_nummer
         self.serie_nummer = serie_nummer
 
     def __repr__(self):
-        return f"Bot(fornuis_nummer={self.fornuis_nummer}, serie_nummer={self.serie_nummer})"
+        return f"Bot(oven_nummer={self.oven_nummer}, serie_nummer={self.serie_nummer})"
 
 
 def generate_bots(aantal_bots):
